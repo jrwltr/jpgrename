@@ -80,7 +80,7 @@ def make_filename_from_datetime(rootdir, datetimestring):
 def make_unique_name(fname):
     """adds a number to the end of a jpg file name to make it unique"""
     for number in range(2, 100):
-        newnewname = fname[0:-4] + '_' + str(number) + '.jpg'
+        newnewname = fname[0:-4] + '_' + str(number) + fname[-4:]
         if not os.path.isfile(newnewname):
             return newnewname
     return
