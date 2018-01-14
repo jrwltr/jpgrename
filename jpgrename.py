@@ -1,15 +1,14 @@
 #!/usr/bin/env python
-"""This script renames all JPG files based on the DateTime attribute in the image's exif data"""
-
 ##################################################################################################
-#
-# Rename all "*.JPG" and "*.jpg" in the current directory and optionally, all
-# subdirectories using the images' embedded exif data to form a file name
-# based on the DateTime attribute.
-#
-# File names take the form: DATE_TIME_DAYOFWEEK.jpg for example
-# "2015-03-18_12-58-21_Wednesday.jpg".
-#
+"""This script renames all JPG files based on the DateTime attribute in the image's exif data
+   Rename all '*.JPG' and '*.jpg' in the current directory and optionally, all
+   subdirectories using the images' embedded exif data to form a file name
+   based on the DateTime attribute.
+
+   File names take the form: DATE_TIME_DAYOFWEEK.jpg for example
+   '2015-03-18_12-58-21_Wednesday.jpg'.
+"""
+
 ##################################################################################################
 
 import os
@@ -78,7 +77,9 @@ def make_filename_from_datetime(rootdir, datetimestring):
 
 ##################################################################################################
 def make_unique_name(fname):
-    """adds a number to the end of a jpg file name to make it unique"""
+    """appends a numeric string to the end of a jpg file name to make it unique,
+       expects four character file extension for example 'image.jpg'
+    """
     for number in range(2, 100):
         unique_name = fname[0:-4] + '_' + str(number) + fname[-4:]
         if not os.path.isfile(unique_name):
