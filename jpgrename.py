@@ -94,13 +94,13 @@ def rename_image(rootdir, basename):
     if datetimestring is None:
         if not ARGS.quiet:
             # some files have corrupt or unrecognizable exif data
-            print "Can't retrieve DateTime from ", fname
+            print("Can't retrieve DateTime from ", fname)
         return
 
     newname = make_filename_from_datetime(rootdir, datetimestring)
     if newname is None:
         if not ARGS.quiet:
-            print "Invalid DateTime attribute in", fname, "("+datetimestring+")"
+            print("Invalid DateTime attribute in", fname, "("+datetimestring+")")
         return
 
     if newname == fname:
@@ -110,14 +110,14 @@ def rename_image(rootdir, basename):
     if os.path.isfile(newname):
         newname = make_unique_name(newname)
         if newname is None:
-            print "Can't make unique file name for", + fname
+            print("Can't make unique file name for", + fname)
             return
 
     if ARGS.no_op:
         return
 
     if ARGS.verbose:
-        print fname, '-->', newname
+        print(fname, '-->', newname)
 
     os.rename(fname, newname)
 
